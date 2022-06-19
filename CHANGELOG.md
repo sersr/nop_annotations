@@ -1,3 +1,6 @@
+
+## 0.1.1
+* 路由注解
 ## 0.1.0
 
 * `isolateName`: 如果与`${className}Default`不一致，则创建一个以`isolateName`命名的 `Isolate`
