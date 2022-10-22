@@ -7,8 +7,8 @@ class NopRouteMain with Base {
     this.rootName = 'root',
     this.pathName = '',
     required this.main,
-    this.preInit = const [],
-    this.preInitUnique = const [],
+    this.list = const [],
+    this.groupList = const [],
   });
   final String className;
   @override
@@ -21,9 +21,9 @@ class NopRouteMain with Base {
   final bool private;
   final Type main;
   @override
-  final List<Type> preInit;
+  final List<Type> list;
   @override
-  final List<Type> preInitUnique;
+  final List<Type> groupList;
 
   @override
   String get name => rootName;
@@ -37,8 +37,8 @@ class RouteItem with Base {
     this.name = '',
     required this.page,
     this.pages = const [],
-    this.preInit = const [],
-    this.preInitUnique = const [],
+    this.list = const [],
+    this.groupList = const [],
   });
   @override
   final String name;
@@ -51,9 +51,9 @@ class RouteItem with Base {
   final List<RouteItem> pages;
 
   @override
-  final List<Type> preInit;
+  final List<Type> list;
   @override
-  final List<Type> preInitUnique;
+  final List<Type> groupList;
 }
 
 mixin Base {
@@ -61,10 +61,10 @@ mixin Base {
   Type get page;
   List<RouteItem> get pages;
 
-  List<Type> get preInit;
+  List<Type> get list;
 
   /// 不会从 parent Route 寻找
-  List<Type> get preInitUnique;
+  List<Type> get groupList;
 }
 
 /// 类型: Widget Function(BuildContext context,Widget child)
