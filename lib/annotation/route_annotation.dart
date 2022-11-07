@@ -7,7 +7,7 @@ class NopRouteMain with Base {
     this.rootName = 'root',
     this.pathName = '',
     required this.main,
-    this.list = const [],
+    @Deprecated('will be removed.') this.list = const [],
     this.groupList = const [],
   });
   final String className;
@@ -37,7 +37,7 @@ class RouteItem with Base {
     this.name = '',
     required this.page,
     this.pages = const [],
-    this.list = const [],
+    @Deprecated('will be removed.') this.list = const [],
     this.groupList = const [],
   });
   @override
