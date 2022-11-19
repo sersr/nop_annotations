@@ -3,6 +3,7 @@ class NopRouteMain with Base {
     this.className = '',
     this.pages = const [],
     this.private = true,
+    this.debugEnabled = true,
     this.genKey = false,
     this.rootName = 'root',
     this.pathName = '',
@@ -19,6 +20,7 @@ class NopRouteMain with Base {
 
   /// 除了root route其他都生成私有字段
   final bool private;
+  final bool debugEnabled;
   final Type main;
   @override
   final List<Type> list;
