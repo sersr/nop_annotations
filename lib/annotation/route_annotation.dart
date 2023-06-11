@@ -72,5 +72,6 @@ mixin Base {
 /// 类型: Widget Function(BuildContext context,Widget child)
 class RouteBuilderItem {
   const RouteBuilderItem({this.pages = const []});
-  final List<Type> pages;
+  // element: class or function
+  final List<dynamic> pages;
 }
