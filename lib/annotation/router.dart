@@ -1,6 +1,6 @@
 class Param {
-  const Param(this.name) : isQuery = false;
-  const Param.query(this.name) : isQuery = true;
+  const Param({this.name = ''}) : isQuery = false;
+  const Param.query({this.name = ''}) : isQuery = true;
   final String name;
   final bool isQuery;
 }
