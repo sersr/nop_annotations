@@ -10,6 +10,7 @@ class RouterMain with RouterBase {
     this.name = '',
     this.className = '',
     this.navClassName = '',
+    this.classToNameReg = '',
     required this.page,
     this.pages = const [],
     this.pageBuilder,
@@ -22,6 +23,8 @@ class RouterMain with RouterBase {
   final String navClassName;
   final bool genKey;
   final bool private;
+  @override
+  final String classToNameReg;
 
   @override
   final String name;
@@ -30,7 +33,7 @@ class RouterMain with RouterBase {
   @override
   final List<RouterPage> pages;
   @override
-  final Function? pageBuilder;
+  final PageBuildFn? pageBuilder;
 
   /// 不会从 parent Route 寻找
   @override
@@ -40,11 +43,16 @@ class RouterMain with RouterBase {
 class RouterPage with RouterBase {
   const RouterPage({
     this.name = '',
+    this.classToNameReg,
     required this.page,
     this.pages = const [],
     this.pageBuilder,
     this.groupList = const [],
   });
+
+  @override
+  final String? classToNameReg;
+
   @override
   final String name;
   @override
@@ -52,20 +60,24 @@ class RouterPage with RouterBase {
   @override
   final List<RouterPage> pages;
   @override
-  final Function? pageBuilder;
+  final PageBuildFn? pageBuilder;
 
   /// 不会从 parent Route 寻找
   @override
   final List<Type> groupList;
 }
 
+/// type: Page Function(RouteQueueEntry entry, Widget child);
+typedef PageBuildFn = Function;
+
 mixin RouterBase {
   String get name;
+  String? get classToNameReg;
+
   dynamic get page;
   List<RouterPage> get pages;
 
-  //e.g: Page Function(Widget child);
-  Function? get pageBuilder;
+  PageBuildFn? get pageBuilder;
 
   /// 不会从 parent Route 寻找
   List<Type> get groupList;
