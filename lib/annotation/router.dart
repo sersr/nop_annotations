@@ -9,6 +9,7 @@ class RouterMain with RouterBase {
   const RouterMain({
     this.name = '',
     this.className = '',
+    this.restorationId,
     this.navClassName = '',
     this.classToNameReg = '',
     required this.page,
@@ -17,6 +18,7 @@ class RouterMain with RouterBase {
     this.groupList = const [],
     this.genKey = false,
     this.private = true,
+    this.redirectFn,
   });
 
   final String className;
@@ -25,6 +27,11 @@ class RouterMain with RouterBase {
   final bool private;
   @override
   final String classToNameReg;
+
+  final String? restorationId;
+
+  /// RouteQueueEntry Function(RouteQueueEntry entry);
+  final Function? redirectFn;
 
   @override
   final String name;
