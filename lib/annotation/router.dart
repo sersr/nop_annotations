@@ -55,6 +55,7 @@ class RouterPage with RouterBase {
     this.pages = const [],
     this.pageBuilder,
     this.groupList = const [],
+    this.redirectFn,
   });
 
   @override
@@ -68,6 +69,9 @@ class RouterPage with RouterBase {
   final List<RouterPage> pages;
   @override
   final PageBuildFn? pageBuilder;
+
+  /// RouteQueueEntry Function(RouteQueueEntry entry);
+  final Function? redirectFn;
 
   /// 不会从 parent Route 寻找
   @override
