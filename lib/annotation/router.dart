@@ -1,7 +1,8 @@
 class Param {
-  const Param({this.name = ''}) : isQuery = false;
-  const Param.query({this.name = ''}) : isQuery = true;
+  const Param({this.name = '', this.fromJson}) : isQuery = false;
+  const Param.query({this.name = '', this.fromJson}) : isQuery = true;
   final String name;
+  final Function? fromJson;
   final bool isQuery;
 }
 
