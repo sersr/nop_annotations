@@ -20,6 +20,7 @@ class RouterMain with RouterBase {
     this.genKey = false,
     this.private = true,
     this.redirectFn,
+    this.errorBuilder,
   });
 
   final String className;
@@ -31,7 +32,7 @@ class RouterMain with RouterBase {
 
   final String? restorationId;
 
-  /// RouteQueueEntry Function(RouteQueueEntry entry);
+  @override
   final Function? redirectFn;
 
   @override
@@ -46,6 +47,11 @@ class RouterMain with RouterBase {
   /// 不会从 parent Route 寻找
   @override
   final List<Type> groupList;
+
+  ///```dart
+  /// RouteQueueEntry Function(String location, Map params, Map extra, Object? groupId);
+  /// ```
+  final Function? errorBuilder;
 }
 
 class RouterPage with RouterBase {
@@ -71,7 +77,7 @@ class RouterPage with RouterBase {
   @override
   final PageBuildFn? pageBuilder;
 
-  /// RouteQueueEntry Function(RouteQueueEntry entry);
+  @override
   final Function? redirectFn;
 
   /// 不会从 parent Route 寻找
@@ -79,7 +85,11 @@ class RouterPage with RouterBase {
   final List<Type> groupList;
 }
 
-/// type: Page Function(RouteQueueEntry entry, Widget child);
+/// {@template nop_annotations.annotation.PageBuildFn}
+/// ```dart
+///  Page Function(RouteQueueEntry entry, Widget child);
+/// ```
+/// {@endtemplate}
 typedef PageBuildFn = Function;
 
 mixin RouterBase {
@@ -89,7 +99,13 @@ mixin RouterBase {
   dynamic get page;
   List<RouterPage> get pages;
 
+  /// {@macro nop_annotations.annotation.PageBuildFn}
   PageBuildFn? get pageBuilder;
+
+  ///```dart
+  /// RouteQueueEntry Function(RouteQueueEntry entry);
+  /// ```
+  Function? get redirectFn;
 
   /// 不会从 parent Route 寻找
   List<Type> get groupList;
