@@ -16,12 +16,11 @@ class RouterMain with RouterBase {
     required this.page,
     this.pages = const [],
     this.pageBuilder,
-    this.groupList = const [],
     this.genKey = false,
     this.private = true,
     this.redirectFn,
     this.errorBuilder,
-  });
+  }) : groupList = const [];
 
   final String className;
   final String navClassName;
